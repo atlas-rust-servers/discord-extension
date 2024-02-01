@@ -1,5 +1,5 @@
 # Discord Framework
-Discord framework for [Rust](https://store.steampowered.com/app/252490/Rust/) using the [Oxide/uMod](https://umod.org) extension platforms to utilise discord's webhooks.
+Discord framework for [Rust](https://store.steampowered.com/app/252490/Rust/) using the [Oxide/uMod](https://umod.org) extension platforms to send webhooks to discord.
 
 ## Getting Started
 1. Grab the Oxide.Ext.DiscordExt.dll from latest release
