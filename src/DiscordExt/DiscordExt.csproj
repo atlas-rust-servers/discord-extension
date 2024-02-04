@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net48</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <AssemblyName>Oxide.Ext.DiscordExt</AssemblyName>
+        <RootNamespace>Oxide.Ext.DiscordExt</RootNamespace>
+
+        <!-- removes the .pdb file from the output folder -->
+        <DebugType>embedded</DebugType>
+        <LangVersion>11</LangVersion>
+    </PropertyGroup>
+
+    <!-- make all references non-private, so they won't be copied to the output folder -->
+    <Target Name="ClearReferenceCopyLocalPaths" AfterTargets="ResolveAssemblyReferences">
+        <ItemGroup>
+            <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)"/>
+        </ItemGroup>
+    </Target>
+
+    <!-- remove the .deps.json file from the output folder -->
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="if exist &quot;$(OutDir)*.deps.json&quot; del &quot;$(OutDir)*.deps.json&quot;"/>
+    </Target>
+
+</Project>
