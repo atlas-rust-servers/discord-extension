@@ -47,14 +47,6 @@ Remove-Item -Path "$oxideDir\Oxide.Rust.zip"
 # Move .dll files from Oxide to the current directory
 Move-Item -Path "$oxideDir\RustDedicated_Data\Managed\*.dll" -Destination $resourcesDir -Force
 
-# Download latest ui framework dll
-Invoke-WebRequest -Uri "https://github.com/dassjosh/Rust.UIFramework/releases/latest/download/Oxide.Ext.UiFramework.dll" -OutFile "Oxide.Ext.UiFramework.dll"
-Move-Item -Path "Oxide.Ext.UiFramework.dll" -Destination $resourcesDir -Force
-
-# Download latest ui framework dll
-Invoke-WebRequest -Uri "https://github.com/ilovepatatos-rust/console-extension/releases/latest/download/Oxide.Ext.ConsoleExt.dll" -OutFile "Oxide.Ext.ConsoleExt.dll"
-Move-Item -Path "Oxide.Ext.ConsoleExt.dll" -Destination $resourcesDir -Force
-
 # Delete the temporary folder
 Remove-Item -Path $tmpDir -Force -Recurse
 
