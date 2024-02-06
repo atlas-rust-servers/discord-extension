@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Oxide.Ext.Discord;
+namespace Oxide.Ext.DiscordExt;
 
 [Serializable]
 public class Embed

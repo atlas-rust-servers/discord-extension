@@ -3,7 +3,7 @@ using System.Text;
 using Newtonsoft.Json;
 using UnityEngine.Networking;
 
-namespace Oxide.Ext.Discord;
+namespace Oxide.Ext.DiscordExt;
 
 [Serializable]
 public class Message
