@@ -32,6 +32,9 @@ public class Embed
     [JsonProperty("thumbnail")]
     public EmbedThumbnail Thumbnail { get; set; } = new();
 
+    [JsonProperty("provider")]
+    public Provider Provider { get; set; }
+
     [JsonProperty("fields")]
     public List<EmbedField> Fields { get; set; } = new();
 

@@ -11,10 +11,10 @@ public class EmbedAuthor
     [JsonProperty("url")]
     public string Url { get; set; }
 
-    [JsonProperty("iconUrl")]
+    [JsonProperty("icon_url")]
     public string IconUrl { get; set; }
 
-    [JsonProperty("proxyIconUrl")]
+    [JsonProperty("proxy_icon_url")]
     public string ProxyIconUrl { get; set; }
 
     public EmbedAuthor Clone()

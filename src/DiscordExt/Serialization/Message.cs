@@ -53,7 +53,7 @@ public class Message
     {
         var forms = new List<IMultipartFormSection>();
 
-        string json = JsonConvert.SerializeObject(this);
+        string json = ToJson();
         forms.Add(new MultipartFormDataSection("payload_json", json));
 
         foreach (string path in files)
