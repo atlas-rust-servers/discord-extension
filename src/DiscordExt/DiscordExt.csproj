@@ -1,74 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>net48</TargetFramework>
+        <LangVersion>14</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
-        <AssemblyName>Oxide.Ext.DiscordExt</AssemblyName>
+
         <RootNamespace>Oxide.Ext.DiscordExt</RootNamespace>
-        <Configurations>Debug;Release</Configurations>
-        <Platforms>Oxide;Carbon</Platforms>
+        <AssemblyName Condition="'$(RustFramework)' == 'carbon'">Carbon.Ext.DiscordExt</AssemblyName>
+        <AssemblyName Condition="'$(RustFramework)' != 'carbon'">Oxide.Ext.DiscordExt</AssemblyName>
 
-        <!-- removes the .pdb file from the output folder -->
+        <!-- Removes the .pdb file from the output folder. -->
         <DebugType>embedded</DebugType>
-        <LangVersion>11</LangVersion>
     </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Carbon' ">
-        <DefineConstants>TRACE;DEBUG;CARBON</DefineConstants>
-        <AssemblyName>Carbon.Ext.DiscordExt</AssemblyName>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Oxide' ">
-        <DefineConstants>TRACE;DEBUG;OXIDE</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Carbon' ">
-        <DefineConstants>TRACE;CARBON</DefineConstants>
-        <AssemblyName>Carbon.Ext.DiscordExt</AssemblyName>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|Oxide' ">
-        <DefineConstants>TRACE;OXIDE</DefineConstants>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <Reference Include="Assembly-CSharp">
-        <HintPath>..\dependencies\Assembly-CSharp.dll</HintPath>
-      </Reference>
-      <Reference Include="Carbon.Common" Condition=" '$(Platform)' == 'Carbon'">
-        <HintPath>..\dependencies\Carbon.Common.dll</HintPath>
-      </Reference>
-      <Reference Include="Carbon.SDK" Condition=" '$(Platform)' == 'Carbon'">
-        <HintPath>..\dependencies\Carbon.SDK.dll</HintPath>
-      </Reference>
-      <Reference Include="Facepunch.UnityEngine">
-        <HintPath>..\dependencies\Facepunch.UnityEngine.dll</HintPath>
-      </Reference>
-      <Reference Include="Newtonsoft.Json">
-        <HintPath>..\dependencies\Newtonsoft.Json.dll</HintPath>
-      </Reference>
-      <Reference Include="Oxide.Core" Condition=" '$(Platform)' == 'Oxide'">
-        <HintPath>..\dependencies\Oxide.Core.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.CoreModule">
-        <HintPath>..\dependencies\UnityEngine.CoreModule.dll</HintPath>
-      </Reference>
-      <Reference Include="UnityEngine.UnityWebRequestModule">
-        <HintPath>..\dependencies\UnityEngine.UnityWebRequestModule.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
-    <!-- make all references non-private, so they won't be copied to the output folder -->
-    <Target Name="ClearReferenceCopyLocalPaths" AfterTargets="ResolveAssemblyReferences">
-        <ItemGroup>
-            <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" />
-        </ItemGroup>
-    </Target>
-
-    <!-- remove the .deps.json file from the output folder -->
-    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-        <Exec Command="if exist &quot;$(OutDir)*.deps.json&quot; del &quot;$(OutDir)*.deps.json&quot;" />
-    </Target>
-
 </Project>
